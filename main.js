@@ -29,17 +29,37 @@
 // console.log(sumNumber(2, 10));
 
 // //Повернути об'єкт у якому вказується кількість тегів
-// const tweets = [
-//   { id: "000", likes: 5, tags: ["js", "nodejs"] },
-//   { id: "001", likes: 2, tags: ["html", "css"] },
-//   { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
-//   { id: "003", likes: 8, tags: ["css", "react"] },
-//   { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
-// ];
+const tweets = [
+  { id: "000", likes: 5, tags: ["js", "nodejs"] },
+  { id: "001", likes: 2, tags: ["html", "css"] },
+  { id: "002", likes: 17, tags: ["html", "js", "nodejs"] },
+  { id: "003", likes: 8, tags: ["css", "react"] },
+  { id: "004", likes: 0, tags: ["js", "nodejs", "react"] },
+];
 
-// const status = tweets.flatMap((tweet) => {
-//   return tweet.tags;
-// });
+const status = tweets.flatMap((tweet) => {
+  return tweet.tags;
+});
+
+const count = status.reduce((acc, tag) => {
+  acc[tag] = (acc[tag] || 0) + 1;
+  return acc;
+}, {});
+console.log(count);
+
+// function countStatus() {
+//   return tweets.reduce((count, tweet) => {
+//     if (tweet.tags.includes("js")) {
+//       count++
+//     } else if (tweet.tags.includes("node.js")) {
+//       count++;
+//     }
+//     return count;
+//   }, 0);
+// }
+
+// console.log(countStatus());
+
 // console.log(status);
 
 // const statusCount = tweets.map((tweet) => ({
@@ -60,7 +80,7 @@
 
 // // statusNumber(status);
 
-// const buttonEl = document.querySelector("#passwordButton");
+const buttonEl = document.querySelector("#passwordButton");
 // const inputEl = document.querySelector("#passwordInput");
 
 // function toHideText(event) {
@@ -75,15 +95,39 @@
 
 // buttonEl.addEventListener("click", toHideText);
 
-import users from "./users.js";
+// Завдання 4
+// Кнопка "Зменшити" робить квадрат менше на 10 пікселів, допопка "Збільшити" - більше на 10 пікселів.
+// */
 
-function getUserByGender(users, gender) {
-  users.reduce((acc, user) => {
-    if (user.gender === gender) {
-      acc.push(user.name);
-    }
-  }, []);
-  return acc;
-}
+/*
+Завдання 7
+При натисканні на коло він повинен слідувати за курсором.
+При повторному натисканні він стає в початкове положення.
+https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/MouseEvent
+https://developer.mozilla.org/ru/docs/Web/API/MouseEvent/pageX
+https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/pageY
+*/
 
-console.log(getUserByGender(users, "male"));
+// import users from "./users.js";
+
+// function getUserByGender(users, gender) {
+//   users.reduce((acc, user) => {
+//     if (user.gender === gender) {
+//       acc.push(user.name);
+//     }
+//   }, []);
+//   return acc;
+// }
+
+// console.log(getUserByGender(users, "male"));
+
+const valiant = {
+  name: "Halyna Lysun",
+  showName() {
+    console.log(`My name is ${this.name}`);
+  },
+};
+
+valiant.showName.apply(valiant);
+
+buttonEl.addEventListener("click", valiant.showName.bind(valiant));

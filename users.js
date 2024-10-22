@@ -112,19 +112,30 @@ const users = [
 // console.log(getUserWithEmail(users, 'shereeanthony@kog.com')); // {об'єкт користувача Sheree Anthony}
 // console.log(getUserWithEmail(users, 'elmahead@omatom.com')); // {об'єкт користувача Elma Head}
 
-function getUserByEmail(users, email) {
-  const user = users.filter((user) => {
-    if (user.email === email) {
-      return user.name;
-    }
-  });
-  return user[0].name;
-}
+// function getUserByEmail(users, email) {
+//   const user = users.filter((user) => {
+//     if (user.email === email) {
+//       return user.name;
+//     }
+//   });
+//   return user[0].name;
+// }
 
-console.log(getUserByEmail(users, "shereeanthony@kog.com"));
+// console.log(getUserByEmail(users, "shereeanthony@kog.com"));
 //TODO:==============================================
 // Отримати масив користувачів віком від min до max
 // console.log (getUsersWithAge (users, 20, 30));
 // [об'єкт Ross Vazquez, об'єкт Elma Head, об'єкт Carey Barr]
 // console.log (getUsersWithAge (users, 30, 40));
 // [об'єкт Moore Hensley, об'єкт Sharlene Bush, об'єкт Blackburn Dotson, об'єкт Sheree Anthony]
+
+function getUserByTheAge(users, min, max) {
+  return users.reduce((arr, user) => {
+    if (user.age >= min && user.age <= max) {
+      arr.push(user.name);
+    }
+    return arr;
+  }, []);
+}
+
+console.log(getUserByTheAge(users, 20, 30));
